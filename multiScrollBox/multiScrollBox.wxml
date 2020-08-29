@@ -1,0 +1,20 @@
+<view class="nav" style="{{navStyle}}">
+	<view
+		class="head"
+		style="{{activeIndex == index? activeTabStyle : normalTabStyle}}"
+		wx:for="{{amount}}"
+		wx:key="index"
+		data-type="{{index}}" bindtap='_changePage'>
+		<slot name="title{{index}}"></slot>
+		<view wx:if="{{hasBadge && badgeArr[index]}}" class="num {{activeIndex == index? 'active':''}}">
+			{{badgeArr[index]}}
+		</view>
+	</view>
+</view>
+<swiper id="swiper" current="{{activeIndex}}" bindchange="_changePage" style="height:{{swiperHeight}}">
+	<swiper-item wx:for="{{amount}}" wx:key="index" item-id="{{index}}" class="box">
+		<scroll-view data-idx="{{index}}" lower-threshold="{{lowerHeight}}" bind:scrolltolower="_dropdownLoad" scroll-y="{{true}}">
+			<slot name="item{{index}}"></slot>
+		</scroll-view>
+	</swiper-item>
+</swiper>
