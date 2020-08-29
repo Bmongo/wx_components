@@ -1,0 +1,16 @@
+<scroll-view 
+	id="scrollView" 
+	scroll-y="{{true}}" 
+	style="height:{{scrollViewHeight}};"
+	lower-threshold="{{lowerHeight}}"
+	bind:scrolltolower="_dropdownLoad">
+	<slot></slot>
+	<view class="spinner" hidden="{{!loading}}">
+		<view class="rect1 rect"></view>
+		<view class="rect2 rect"></view>
+		<view class="rect3 rect"></view>
+		<view class="rect4 rect"></view>
+		<view class="rect5 rect"></view>
+	</view>
+	<view class="none" hidden="{{!none}}">没有更多啦</view>
+</scroll-view>
